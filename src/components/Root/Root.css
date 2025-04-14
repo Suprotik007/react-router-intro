@@ -1,0 +1,9 @@
+.side{
+    /* background-color: aquamarine; */
+    display: flex;
+    gap:20px
+}
+nav.a.active{
+    text-decoration: underline;
+    text-decoration: dotted;
+}
