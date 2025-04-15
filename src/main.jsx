@@ -18,6 +18,7 @@ import UserDetails from './components/UserDeatail/UserDetails.jsx'
 import Posts from './components/Posts/Posts.jsx'
 import PostDetail from './components/PostDetails/PostDetail.jsx';
 import SinglePost from './components/Posts/SinglePost.jsx';
+import NoDetails from './components/Nodetails/NoDetails.jsx';
 
 const usersPromise=fetch('https://jsonplaceholder.typicode.com/users')
 .then(res=>res.json())
@@ -60,7 +61,15 @@ element:<Suspense fallback={<span>Loading....</span>}>
         path:'posts/:postId',
         loader:({params})=>fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         Component:PostDetail
-      }
+      },
+      
+      {
+        path:'moreDetail',
+        
+        element:<Suspense fallback={<span>Loading....</span>}>
+  <NoDetails ></NoDetails>
+</Suspense>
+      },
     ]
   },
   {
@@ -68,6 +77,12 @@ element:<Suspense fallback={<span>Loading....</span>}>
     path: "/",
     element: <div>Hello World</div>,
   },
+  {
+    path:'*',
+    element: <h3>Not Found</h3>
+    
+    
+          },
 ]);
 
 createRoot(document.getElementById('root')).render(
